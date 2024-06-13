@@ -7,7 +7,7 @@ app.get('/', (req, res) => res.send('Hello there'))
 app.listen(3030, () => console.log('Server ready at port 3030'))
 
 app.get('/api/bug', (req, res) => {
-  bugService.query().then(cars => res.send(cars))
+  bugService.query().then(bugs => res.send(bugs))
 })
 app.get('/api/bug/save', (req, res) => {
   res.send('<h1>Res</h1>')
