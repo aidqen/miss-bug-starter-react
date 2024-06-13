@@ -1,5 +1,7 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
+// import axios from 'axios'
+
 
 const STORAGE_KEY = 'bugDB'
 
@@ -10,15 +12,29 @@ export const bugService = {
   remove,
 }
 
-const bugs = utilService.readJsonFile('data/bugs.json')
+// const bugs = utilService.readJsonFile('data/bugs.json')
+
+// function query() {
+//   return Promise.resolve(bugs)
+// }
 
 function query() {
-  return Promise.resolve(bugs)
+  return new Promise((resolve, reject) => {
+    axios.get('data/bugs.json')
+        .then(res => resolve(res.data))
+        .catch(err => reject(err))
+  })
 }
 
+
+// function query() {
+//   return axios.get('/data/bugs.json');
+// }
+
+
 function getById(bugId) {
-  const bug = bugs.find(bug => bug._id === bugId)
-  return Promise.resolve(bug)
+  return query()
+  .then(bugs => bugs.find(bug => bug._id === bugId))
 }
 
 function remove(bugId) {
