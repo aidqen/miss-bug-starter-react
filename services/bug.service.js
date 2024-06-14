@@ -1,3 +1,5 @@
+import { utilService } from "./util.service.js"
+
 export const bugService = {
     query,
     getById,
@@ -5,7 +7,7 @@ export const bugService = {
     save
 }
 
-var bugs = utilService.readJsonFile('./data/bug.json')
+var bugs = utilService.readJsonFile('data/bugs.json')
 
 function query() {
     return Promise.resolve(bugs)
