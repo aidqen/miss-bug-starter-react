@@ -26,17 +26,18 @@ function remove(bugId) {
 }
 
 function save(bugToSave) {
+    console.log(bugToSave);
     if(bugToSave._id) {
         const idx = bugs.findIndex(bug => bug._id === bugToSave._id)
         bugs.splice(idx, 1, bugToSave)
     } else {
         bugToSave._id = utilService.makeId()
+        bugToSave.createdAt = Date.now()
         bugs.push(bugToSave)
     }
-    return _savebugsToFile()
-        .then(() => bugToSave)
+    return _savebugsToFile().then(() => bugToSave)
 }
 
 function _savebugsToFile() {
-    return  utilService.writeJsonFile('./data/bug.json', bugs)
+    return utilService.writeJsonFile('./data/bugs.json', bugs)
 }

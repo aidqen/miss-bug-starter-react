@@ -12,7 +12,8 @@ export function BugIndex() {
   }, [])
 
   function loadBugs() {
-    bugService.query().then(setBugs)
+    bugService.query()
+        .then(setBugs)
   }
 
   function onRemoveBug(bugId) {
@@ -33,9 +34,9 @@ export function BugIndex() {
     const bug = {
       title: prompt('Bug title?'),
       severity: +prompt('Bug severity?'),
+      description: prompt('Bug description')
     }
-    bugService
-      .save(bug)
+    bugService.save(bug)
       .then((savedBug) => {
         console.log('Added Bug', savedBug)
         setBugs(prevBugs => [...prevBugs, savedBug])
@@ -64,6 +65,8 @@ export function BugIndex() {
         showErrorMsg('Cannot update bug')
       })
   }
+
+  console.log(bugs);
 
   return (
     <main>

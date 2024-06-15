@@ -20,16 +20,11 @@ function getById(bugId) {
 }
 
 function remove(bugId) {
-  const idx = bugs.findIndex(bug => bug._id === bugId)
-  bugs.splice(idx, 1)
-  console.log(bugs)
-  return _saveBugsToFile(bugs)
+  return axios.get(`${BASE_URL}/${bugId}/remove`)
+                      .then(res => res.data)
 }
 
 function save(bug) {
-  if (bug._id) {
-    return storageService.put(STORAGE_KEY, bug)
-  } else {
-    return storageService.post(STORAGE_KEY, bug)
-  }
+  const queryStr = `/save?title=${bug.title}&description=${bug.description}&severity=${bug.severity}`
+  return axios.get(`${BASE_URL}${queryStr}`).then(res => res.data)
 }
