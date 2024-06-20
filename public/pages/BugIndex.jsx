@@ -8,7 +8,6 @@ const { useState, useEffect } = React
 export function BugIndex() {
   const [bugs, setBugs] = useState([])
   const [filterBy, setFilterBy] = useState({txt: '', minSeverity: 0});
-  console.log('filterBy:', filterBy)
   
 
   useEffect(() => {
