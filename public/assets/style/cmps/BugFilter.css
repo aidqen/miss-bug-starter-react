@@ -6,3 +6,17 @@
     display: grid;
     grid-template-columns: 100px 200px;
 }
+
+.filter-container > * {
+    margin-block-end: 1em;
+    background-color: rgb(32, 70, 140);
+    color: white;
+    border-radius: 10px;
+    font-weight: 900;
+    width: max-content;
+    padding: 1em;
+}
+
+.sorting-options {
+    margin-inline-end: 2em;
+}
