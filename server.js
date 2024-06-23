@@ -43,8 +43,9 @@ app.get('/api/bug', (req, res) => {
   bugService.query(filterBy).then(bugs => res.send(bugs))
 })
 
-app.get('/api/bug/save', (req, res) => {
-  const { _id, title, description, severity, createdAt } = req.query
+app.post('/api/bug', (req, res) => {
+  console.log(req.body);
+  const { _id, title, description, severity, createdAt } = req.body
   const bugToSave = {
     _id,
     title,
@@ -52,7 +53,7 @@ app.get('/api/bug/save', (req, res) => {
     severity,
     createdAt,
   }
-
+  console.log(bugToSave);
   bugService.save(bugToSave).then(savedBug => res.send(savedBug))
 })
 
