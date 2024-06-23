@@ -4,27 +4,40 @@
     "title": "Cannot save a new car",
     "description": "problem when clicking Save",
     "severity": "4",
-    "createdAt": "1542107359454"
+    "createdAt": "1542107359454",
+    "labels": [
+      "critical",
+      "need-CR",
+      "dev-branch"
+    ]
   },
   {
     "_id": "c102",
     "title": "An error occured",
     "description": "problem when clicking Save",
     "severity": 3,
-    "createdAt": 1542107359454
+    "createdAt": 1542107359454,
+    "labels": [
+      "critical",
+      "need-CR",
+      "dev-branch"
+    ]
   },
   {
     "_id": "c103",
     "title": "Error",
     "description": "Unknown error",
     "severity": 3,
-    "createdAt": 1542107359454
+    "createdAt": 1542107359454,
+    "labels": [
+      "critical"
+    ]
   },
   {
     "_id": "c104",
     "title": "Cannot save",
     "description": "problem when clicking Save",
-    "severity": 4,
+    "severity": 2,
     "createdAt": 1542107359454
   },
   {
@@ -32,20 +45,16 @@
     "title": "Connection problems",
     "description": "No internet connection",
     "severity": 2,
-    "createdAt": 1542107359454
-  },
-  {
-    "_id": "bzpEU1",
-    "title": "Connection problems",
-    "description": "No internet connection",
-    "severity": "0",
-    "createdAt": 1718453911559
+    "createdAt": 1542107359454,
+    "labels": [
+      "need-CR"
+    ]
   },
   {
     "_id": "vLygBA",
     "title": "An error occured",
     "description": "problem when clicking Save",
-    "severity": "0",
+    "severity": 3,
     "createdAt": 1718454310042
   }
 ]
