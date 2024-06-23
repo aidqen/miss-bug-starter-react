@@ -7,8 +7,9 @@ const { useState, useEffect } = React
 
 export function BugIndex() {
   const [bugs, setBugs] = useState([])
-  const [filterBy, setFilterBy] = useState({txt: '', minSeverity: 0});
+  const [filterBy, setFilterBy] = useState({txt: '', minSeverity: 0, sortBy:{ type: 'severity', direction: '1' }, pageIdx: 0});
   
+  console.log(filterBy);
 
   useEffect(() => {
     loadBugs()
@@ -54,8 +55,7 @@ export function BugIndex() {
   function onEditBug(bug) {
     const severity = +prompt('New severity?')
     const bugToSave = { ...bug, severity }
-    bugService
-      .save(bugToSave)
+    bugService.save(bugToSave)
       .then((savedBug) => {
         console.log('Updated Bug:', savedBug)
         setBugs(prevBugs => prevBugs.map((currBug) =>

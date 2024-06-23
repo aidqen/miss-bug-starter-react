@@ -26,8 +26,7 @@ app.get('/api/bug', (req, res) => {
     if (!visitedBugs.includes(bugId)) visitedBugs.push(bugId)
     res.cookie('visitedBugs', visitedBugs, { maxAge: 10000 })
 
-    return bugService
-      .getById(bugId)
+    return bugService.getById(bugId)
       .then(bug => res.send(bug))
       .catch(err => {
         res.status(500).send('error')
@@ -35,10 +34,12 @@ app.get('/api/bug', (req, res) => {
       })
   }
 
-  const { txt, minSeverity } = req.query
+  const { txt, minSeverity, sortBy, pageIdx } = req.query
   const filterBy = {
     txt,
     minSeverity: +minSeverity,
+    sortBy,
+    pageIdx
   }
   bugService.query(filterBy).then(bugs => res.send(bugs))
 })
@@ -59,6 +60,7 @@ app.post('/api/bug', (req, res) => {
 
 app.delete('/api/bug', (req, res) => {
     const bugId = req.query.bugId
+
     console.log(bugId);
   
   bugService.remove(bugId).then(() => res.send(`Bug ${bugId} deleted`))

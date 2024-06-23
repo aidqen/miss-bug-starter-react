@@ -7,10 +7,11 @@ export const bugService = {
   save,
 }
 
+const PAGE_SIZE = 3
 var bugs = utilService.readJsonFile('data/bugs.json')
 
 function query(filterBy) {
-  const { txt, minSeverity } = filterBy
+  const { txt, minSeverity, sortBy, pageIdx } = filterBy
   var filteredBugs = bugs
   if (txt) {
     const regExp = new RegExp(txt, 'i')
@@ -21,12 +22,40 @@ function query(filterBy) {
   if (minSeverity) {
     filteredBugs = bugs.filter(bug => bug.severity >= minSeverity)
   }
+
+  if (sortBy.type) {
+    switch (sortBy.type) {
+      case 'severity':
+        filteredBugs = filteredBugs.sort(
+          (bug1, bug2) => (bug1.severity - bug2.severity) * sortBy.direction
+        )
+        break
+      case 'createdAt':
+        filteredBugs = filteredBugs.sort(
+          (bug1, bug2) => (bug1.createdAt - bug2.createdAt) * sortBy.direction
+        )
+        break
+      case 'title':
+        if (sortBy.direction === '1')
+          filteredBugs = filteredBugs.sort((bug1, bug2) =>
+            bug1.title.localeCompare(bug2.title)
+          )
+        else
+          filteredBugs = filteredBugs.sort((bug1, bug2) =>
+            bug2.title.localeCompare(bug1.title)
+          )
+        break
+    }
+  }
+
+  const startIdx = pageIdx * PAGE_SIZE
+  filteredBugs = filteredBugs.slice(startIdx, startIdx + PAGE_SIZE)
   return Promise.resolve(filteredBugs)
 }
 
 function getById(bugId) {
   const bug = bugs.find(bug => bug._id === bugId)
-  console.log(bug);
+  console.log(bug)
   return Promise.resolve(bug)
 }
 
