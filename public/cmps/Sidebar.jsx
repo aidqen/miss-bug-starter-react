@@ -12,11 +12,18 @@ export function Sidebar() {
 
   return (
     <aside>
-      <UserMsg />
+      {/* <UserMsg /> */}
       <nav>
-      <i className="fa-solid fa-house" onClick={navigate('/')}></i>
-      <i class="fa-solid fa-bug" onClick={navigate('/bug')}></i>
-      <i class="fa-solid fa-exclamation" onClick={navigate('/about')}></i>
+        <NavLink to="/">
+          <i className="fa-solid fa-house"></i>
+        </NavLink>
+        <NavLink to="/bug">
+          <i className="fa-solid fa-bug"></i>
+        </NavLink>
+        <NavLink to="/about">
+          <i class="fa-solid fa-exclamation"></i>
+        </NavLink>
+
       </nav>
     </aside>
   )

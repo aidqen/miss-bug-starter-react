@@ -1,0 +1,33 @@
+aside {
+    height: 100vh;
+    min-width: 8.5em;
+    background-color: var(--bgc-aside);
+}
+
+nav {
+    padding-block-start: 1.3em;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2em;
+    font-weight: 600;
+    gap: 37px;
+}
+
+a.active {
+    color: var(--bgc-aside);
+    background-color: var(--active-content);
+}
+
+aside nav > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5em;
+    height: 2.5em;
+    color: rgb(241, 212, 241);
+    border-radius: 16px;
+    font-size: 0.7em;
+}

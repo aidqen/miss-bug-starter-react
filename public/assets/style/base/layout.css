@@ -1,23 +1,18 @@
 main {
     margin-inline-start: 0.4em;
+    /* width: calc(100vw - 8em); */
 }
 
 body {
-    background-color: rgb(0, 0, 31);
-    color: white;
+    font-family: sans-serif
 }
 
-.main-layout {
-    display: grid;
-    grid-template-columns: 1.6rem 1fr 1.6rem;
-}
-
-.main-layout > * {
-    grid-column: 2;
-}
-
-.main-layout .full {
-    grid-column: 1/-1;
+#root {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    background-color:var(--bgc-main);
 }
 
 .container {
