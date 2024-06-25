@@ -11,7 +11,7 @@
 @import "base/forms.css";
 
 /* Components */
-@import "cmps/AppHeader.css";
+@import "cmps/Sidebar.css";
 @import "cmps/UserMsg.css";
 @import "cmps/ToggleButton.css";
 
@@ -20,3 +20,4 @@
 @import "cmps/BugPreview.css";
 @import "cmps/BugDetails.css";
 @import "cmps/BugEdit.css";
+@import "cmps/BugsHeaderTools.css";

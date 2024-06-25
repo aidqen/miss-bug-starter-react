@@ -2,6 +2,7 @@ import { bugService } from '../services/bug.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { BugList } from '../cmps/BugList.jsx'
 import { BugFilter } from '../cmps/BugFilter.jsx'
+import { BugsHeaderTools } from '../cmps/BugsHeaderTools.jsx'
 
 const { useState, useEffect } = React
 
@@ -79,13 +80,13 @@ export function BugIndex() {
   }
 
   return (
-    <main>
-      <main>
+    <React.Fragment>
+      <BugsHeaderTools />
+      <h1>My Bugs</h1>
         <button onClick={onAddBug}>Add Bug ⛐</button>
         <BugFilter filterBy={filterBy} setFilterBy={setFilterBy} pageCount={pageCount}/>
         {!bugs || !bugs.length && <h1>No Bugs...</h1>}
         {bugs.length && <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />}
-      </main>
-    </main>
+    </React.Fragment>
   )
 }
