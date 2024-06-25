@@ -1,8 +1,7 @@
 const Router = ReactRouterDOM.HashRouter
 const {Route, Routes} = ReactRouterDOM
 
-import {AppHeader} from './cmps/AppHeader.jsx'
-import {AppFooter} from './cmps/AppFooter.jsx'
+import {Sidebar} from './cmps/Sidebar.jsx'
 import {Home} from './pages/Home.jsx'
 import {BugIndex} from './pages/BugIndex.jsx'
 import {BugDetails} from './pages/BugDetails.jsx'
@@ -12,7 +11,7 @@ export function App() {
   return (
     <Router>
       <div>
-        <AppHeader />
+        <Sidebar />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -21,7 +20,6 @@ export function App() {
             <Route path="/about" element={<AboutUs />} />
           </Routes>
         </main>
-        <AppFooter />
       </div>
     </Router>
   )

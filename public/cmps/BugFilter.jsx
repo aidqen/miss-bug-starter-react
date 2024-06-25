@@ -1,21 +1,27 @@
-// const { useState, useEffect, useRef } = React
 
-export function BugFilter({ filterBy, setFilterBy }) {
+export function BugFilter({ filterBy, setFilterBy, pageCount }) {
 
 
   function handleChange({ target }) {
-    const { name, value } = target
-    if (name === 'type' || name === 'direction') {
+    const { name, value, checked } = target
+    if (name === 'type') {
       setFilterBy(prevFilterBy => ({...prevFilterBy, sortBy: { ...prevFilterBy.sortBy, [name]: value }}))
+    } else if (name === 'direction') {
+      setFilterBy(prevFilterBy => ({...prevFilterBy, sortBy: { ...prevFilterBy.sortBy, [name]: checked ? 1 : -1 }}))
     } else {
       setFilterBy(prevFilterBy => ({ ...prevFilterBy, [name]: value }))
     }
   }
 
   function onChangePage(diff) {
+    
     const { pageIdx } = filterBy
-    if (pageIdx <= 0) return
+    if (pageIdx + diff < 0) return
+    if (diff === 1) {
+      if (pageIdx === pageCount) return
+    }
      const currPage = pageIdx + diff
+     
      setFilterBy(prevFilterBy => ({...prevFilterBy, pageIdx: currPage}))
   }
 
@@ -23,7 +29,7 @@ export function BugFilter({ filterBy, setFilterBy }) {
 
   return (
     <section className="filter-container flex flex-column">
-      <div className="filter-options flex flex-row">
+      <div className="filter-options flex flex-row mx-1.5">
         <label>
           Text:
           <input
@@ -82,24 +88,8 @@ export function BugFilter({ filterBy, setFilterBy }) {
 
         <div className="sorting-dir">
           <label>
-            1
-            <input
-              type="radio"
-              name="direction"
-              value={1}
-              checked={sortBy.direction === '1'}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            -1
-            <input
-              type="radio"
-              name="direction"
-              value={-1}
-              checked={sortBy.direction === '-1'}
-              onChange={handleChange}
-            />
+            Descending:
+            <input type="checkbox" name="direction"   onChange={handleChange}/>
           </label>
         </div>
       </div>

@@ -20,3 +20,15 @@
 .sorting-options {
     margin-inline-end: 2em;
 }
+
+.pagination > * { 
+    cursor: pointer;
+    margin-inline: 0.5em;
+    border-radius: 13px;
+    padding: 0.7em;
+    transition: 0.3s;
+}
+
+.pagination > *:hover {
+    background-color: rgb(27, 58, 115);
+}

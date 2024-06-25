@@ -5,14 +5,18 @@ export const bugService = {
   getById,
   remove,
   save,
+  getPageCount
 }
 
 const PAGE_SIZE = 3
 var bugs = utilService.readJsonFile('data/bugs.json')
 
 function query(filterBy) {
-  const { txt, minSeverity, sortBy, pageIdx } = filterBy
+  // console.log(filterBy);
   var filteredBugs = bugs
+  if (!filterBy) return Promise.resolve(filteredBugs)
+  
+  const { txt, minSeverity, sortBy, pageIdx } = filterBy
   if (txt) {
     const regExp = new RegExp(txt, 'i')
     filteredBugs = bugs.filter(
@@ -55,8 +59,14 @@ function query(filterBy) {
 
 function getById(bugId) {
   const bug = bugs.find(bug => bug._id === bugId)
-  console.log(bug)
   return Promise.resolve(bug)
+}
+
+function getPageCount() {
+  return query()
+          .then(bugs => {
+            return Math.floor(bugs.length / PAGE_SIZE)
+          })
 }
 
 function remove(bugId) {

@@ -8,31 +8,24 @@ export const bugService = {
   getById,
   save,
   remove,
+  getPageCount,
 }
 
 function query(filterBy) {
-  return axios.get(BASE_URL, {params: filterBy})
-  .then(res => res.data)
-  .then(bugs => {
-    // if (!filterBy) return bugs
-    //   const { txt, minSeverity } = filterBy
-    //   if (txt) {
-    //     const regExp = new RegExp(txt, 'i')
-    //     bugs = bugs.filter(bug => regExp.test(bug.title) || regExp.test(bug.description))
-    //   }
-    //   if (minSeverity) {
-    //     bugs = bugs.filter(bug => bug.severity >= minSeverity)
-    //   }
-      return bugs
-    })
+  return axios.get(BASE_URL, { params: filterBy }).then(res => res.data)
+}
+
+function getPageCount() {
+  console.log('loadPageCount');
+  return axios.get('/api/bug/pageCount').then(res => res.data)
 }
 
 function getById(bugId) {
-  return axios.get(BASE_URL, {params: {bugId}}).then(res => res.data)
+  return axios.get(BASE_URL + `/${bugId}`).then(res => res.data)
 }
 
 function remove(bugId) {
-  return axios.delete(BASE_URL, {params: {bugId}}).then(res => res.data)
+  return axios.delete(BASE_URL + `/${bugId}`).then(res => res.data)
 }
 
 function save(bug) {

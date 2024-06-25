@@ -8,16 +8,25 @@ const { useState, useEffect } = React
 export function BugIndex() {
   const [bugs, setBugs] = useState([])
   const [filterBy, setFilterBy] = useState({txt: '', minSeverity: 0, sortBy:{ type: 'severity', direction: '1' }, pageIdx: 0});
+  const [pageCount, setPageCount] = useState(0);
+  
   
   console.log(filterBy);
 
   useEffect(() => {
     loadBugs()
+    loadPageCount()
   }, [filterBy])
 
   function loadBugs() {
     bugService.query(filterBy)
         .then(setBugs)
+  }
+
+  function loadPageCount() {
+    console.log('loadPageCount');
+    bugService.getPageCount()
+    .then(setPageCount)
   }
 
   function onRemoveBug(bugId) {
@@ -71,10 +80,9 @@ export function BugIndex() {
 
   return (
     <main>
-      <h3>Bugs App</h3>
       <main>
         <button onClick={onAddBug}>Add Bug ⛐</button>
-        <BugFilter filterBy={filterBy} setFilterBy={setFilterBy}/>
+        <BugFilter filterBy={filterBy} setFilterBy={setFilterBy} pageCount={pageCount}/>
         {!bugs || !bugs.length && <h1>No Bugs...</h1>}
         {bugs.length && <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />}
       </main>
