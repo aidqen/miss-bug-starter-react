@@ -1,18 +1,23 @@
 import { bugService } from '../services/bug.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { BugList } from '../cmps/BugList.jsx'
-import { BugFilter } from '../cmps/BugFilter.jsx'
 import { BugsHeaderTools } from '../cmps/BugsHeaderTools.jsx'
+import { BugListHeader } from '../cmps/BugListHeader.jsx'
 
 const { useState, useEffect } = React
 
 export function BugIndex() {
   const [bugs, setBugs] = useState([])
-  const [filterBy, setFilterBy] = useState({txt: '', minSeverity: 0, sortBy:{ type: 'severity', direction: '1' }, pageIdx: 0});
-  const [pageCount, setPageCount] = useState(0);
-  
-  
-  console.log(filterBy);
+  const [filterBy, setFilterBy] = useState({
+    txt: '',
+    minSeverity: 0,
+    sortBy: { type: 'severity', direction: '1' },
+    pageIdx: 0,
+    folder: 'My Bugs'
+  })
+  const [pageCount, setPageCount] = useState(0)
+
+  console.log(filterBy)
 
   useEffect(() => {
     loadBugs()
@@ -20,14 +25,12 @@ export function BugIndex() {
   }, [filterBy])
 
   function loadBugs() {
-    bugService.query(filterBy)
-        .then(setBugs)
+    bugService.query(filterBy).then(setBugs)
   }
 
   function loadPageCount() {
-    console.log('loadPageCount');
-    bugService.getPageCount()
-    .then(setPageCount)
+    console.log('loadPageCount')
+    bugService.getPageCount().then(setPageCount)
   }
 
   function onRemoveBug(bugId) {
@@ -35,10 +38,10 @@ export function BugIndex() {
       .remove(bugId)
       .then(() => {
         console.log('Deleted Succesfully!')
-        setBugs(prevBugs => prevBugs.filter((bug) => bug._id !== bugId))
+        setBugs(prevBugs => prevBugs.filter(bug => bug._id !== bugId))
         showSuccessMsg('Bug removed')
       })
-      .catch((err) => {
+      .catch(err => {
         console.log('Error from onRemoveBug ->', err)
         showErrorMsg('Cannot remove bug')
       })
@@ -48,15 +51,16 @@ export function BugIndex() {
     const bug = {
       title: prompt('Bug title?'),
       severity: +prompt('Bug severity?'),
-      description: prompt('Bug description')
+      description: prompt('Bug description'),
     }
-    bugService.save(bug)
-      .then((savedBug) => {
+    bugService
+      .save(bug)
+      .then(savedBug => {
         console.log('Added Bug', savedBug)
         setBugs(prevBugs => [...prevBugs, savedBug])
         showSuccessMsg('Bug added')
       })
-      .catch((err) => {
+      .catch(err => {
         console.log('Error from onAddBug ->', err)
         showErrorMsg('Cannot add bug')
       })
@@ -65,15 +69,18 @@ export function BugIndex() {
   function onEditBug(bug) {
     const severity = +prompt('New severity?')
     const bugToSave = { ...bug, severity }
-    bugService.save(bugToSave)
-      .then((savedBug) => {
+    bugService
+      .save(bugToSave)
+      .then(savedBug => {
         console.log('Updated Bug:', savedBug)
-        setBugs(prevBugs => prevBugs.map((currBug) =>
-          currBug._id === savedBug._id ? savedBug : currBug
-        ))
+        setBugs(prevBugs =>
+          prevBugs.map(currBug =>
+            currBug._id === savedBug._id ? savedBug : currBug
+          )
+        )
         showSuccessMsg('Bug updated')
       })
-      .catch((err) => {
+      .catch(err => {
         console.log('Error from onEditBug ->', err)
         showErrorMsg('Cannot update bug')
       })
@@ -81,12 +88,13 @@ export function BugIndex() {
 
   return (
     <React.Fragment>
-      <BugsHeaderTools />
-      <h1>My Bugs</h1>
-        <button onClick={onAddBug}>Add Bug ⛐</button>
-        <BugFilter filterBy={filterBy} setFilterBy={setFilterBy} pageCount={pageCount}/>
-        {!bugs || !bugs.length && <h1>No Bugs...</h1>}
-        {bugs.length && <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />}
+      <header className="bugs-header">
+        <BugsHeaderTools />
+        <h1>My Bugs</h1>
+      </header>
+      <BugListHeader filterBy={filterBy} setFilterBy={setFilterBy} pageCount={pageCount} onAddBug={onAddBug}/>
+      {(!bugs || !bugs.length) && <h1>No Bugs...</h1>}
+      {bugs.length && <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />}
     </React.Fragment>
   )
 }
