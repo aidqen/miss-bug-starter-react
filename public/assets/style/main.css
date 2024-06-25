@@ -17,7 +17,8 @@
 
 @import "cmps/BugFilter.css";
 @import "cmps/BugList.css";
+@import "cmps/BugListHeader.css";
 @import "cmps/BugPreview.css";
 @import "cmps/BugDetails.css";
 @import "cmps/BugEdit.css";
-@import "cmps/BugsHeaderTools.css";
+@import "cmps/BugsHeader.css";

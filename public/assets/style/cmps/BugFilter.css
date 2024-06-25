@@ -9,12 +9,26 @@
 
 .filter-container > * {
     margin-block-end: 1em;
-    background-color: rgb(32, 70, 140);
     color: white;
     border-radius: 10px;
     font-weight: 900;
     width: max-content;
     padding: 1em;
+}
+
+.filter-options {
+    padding: 0;
+}
+
+.filter-container select {
+    margin-inline: 1em;
+}
+
+.filter-container :is(input, select) {
+    border-radius: 1em;
+    border: 1.7px solid lightgray;
+    height: 3em;
+    width: 10em;
 }
 
 .sorting-options {

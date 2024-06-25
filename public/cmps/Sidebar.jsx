@@ -21,7 +21,7 @@ export function Sidebar() {
           <i className="fa-solid fa-bug"></i>
         </NavLink>
         <NavLink to="/about">
-          <i class="fa-solid fa-exclamation"></i>
+          <i className="fa-solid fa-exclamation"></i>
         </NavLink>
 
       </nav>
