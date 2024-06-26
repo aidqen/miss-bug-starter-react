@@ -34,7 +34,7 @@ function query(filterBy) {
           (bug1, bug2) => (bug1.severity - bug2.severity) * sortBy.direction
         )
         break
-      case 'createdAt':
+      case 'date':
         filteredBugs = filteredBugs.sort(
           (bug1, bug2) => (bug1.createdAt - bug2.createdAt) * sortBy.direction
         )

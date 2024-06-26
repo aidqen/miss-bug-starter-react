@@ -17,21 +17,8 @@ export function BugListHeader({ onAddBug, filterBy, setFilterBy, pageCount }) {
   }
 
   function handleChange({ target }) {
-    console.log('hi');
-    const { name, value, checked } = target
-    if (name === 'type') {
-      setFilterBy(prevFilterBy => ({
-        ...prevFilterBy,
-        sortBy: { ...prevFilterBy.sortBy, [name]: value },
-      }))
-    } else if (name === 'direction') {
-      setFilterBy(prevFilterBy => ({
-        ...prevFilterBy,
-        sortBy: { ...prevFilterBy.sortBy, [name]: checked ? 1 : -1 },
-      }))
-    } else {
+    const { name, value } = target
       setFilterBy(prevFilterBy => ({ ...prevFilterBy, [name]: value }))
-    }
   }
 
   return (

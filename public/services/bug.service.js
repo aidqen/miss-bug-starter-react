@@ -16,7 +16,6 @@ function query(filterBy) {
 }
 
 function getPageCount() {
-  console.log('loadPageCount');
   return axios.get('/api/bug/pageCount').then(res => res.data)
 }
 
