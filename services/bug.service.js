@@ -49,6 +49,13 @@ function query(filterBy) {
             bug2.title.localeCompare(bug1.title)
           )
         break
+        case 'description':
+          if (sortBy.direction === '1') {
+            filteredBugs = filteredBugs.sort((bug1, bug2) =>
+              bug1.description.localeCompare(bug2.description))
+          } else filteredBugs = filteredBugs.sort((bug1, bug2) =>
+            bug2.description.localeCompare(bug1.description))
+        break
     }
   }
 
