@@ -8,7 +8,7 @@ export const bugService = {
   getPageCount
 }
 
-const PAGE_SIZE = 3
+const PAGE_SIZE = 4
 var bugs = utilService.readJsonFile('data/bugs.json')
 
 function query(filterBy) {
@@ -72,7 +72,12 @@ function getById(bugId) {
 function getPageCount() {
   return query()
           .then(bugs => {
-            return Math.floor(bugs.length / PAGE_SIZE)
+            console.log(bugs.length);
+            console.log(Math.floor(bugs.length / PAGE_SIZE));
+            return {
+              bugsCount: bugs.length,
+              pageCount: Math.floor(bugs.length / PAGE_SIZE) + 1
+            }
           })
 }
 

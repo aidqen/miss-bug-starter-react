@@ -26,7 +26,7 @@ app.get('/api/bug', (req, res) => {
 
 app.get('/api/bug/pageCount', (req, res) => {
   bugService.getPageCount()
-  .then(pages => res.send(pages + ''))
+  .then(response => res.send(response))
 })
 
 

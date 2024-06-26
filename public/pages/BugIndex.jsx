@@ -4,6 +4,7 @@ import { BugList } from '../cmps/BugList.jsx'
 import { BugsHeaderTools } from '../cmps/BugsHeaderTools.jsx'
 import { BugListHeader } from '../cmps/BugListHeader.jsx'
 import { BugTable } from '../cmps/BugTable/BugTable.jsx'
+import { Pagination } from '../cmps/Pagination.jsx'
 
 const { useState, useEffect } = React
 
@@ -14,12 +15,11 @@ export function BugIndex() {
     minSeverity: 0,
     sortBy: { type: 'severity', direction: '1' },
     pageIdx: 0,
-    folder: 'My Bugs'
+    folder: 'My Bugs',
   })
-  const [pageCount, setPageCount] = useState(0)
+  const [bugsInfo, setBugsInfo] = useState({ bugsCount: 0, pageCount: 0 })
 
-  console.log(filterBy)
-
+  console.log(bugsInfo.bugsCount);
   useEffect(() => {
     loadBugs()
     loadPageCount()
@@ -30,7 +30,7 @@ export function BugIndex() {
   }
 
   function loadPageCount() {
-    bugService.getPageCount().then(setPageCount)
+    bugService.getPageCount().then(setBugsInfo)
   }
 
   function onRemoveBug(bugId) {
@@ -86,7 +86,17 @@ export function BugIndex() {
       })
   }
 
-  console.log(filterBy.sortBy);
+  function onChangePage(diff) {
+    const { pageIdx } = filterBy
+    if (pageIdx + diff < 0) return
+    if (diff === 1) {
+      if (pageIdx + diff >= bugsInfo.pageCount) return
+    }
+    const currPage = pageIdx + diff
+
+    setFilterBy(prevFilterBy => ({ ...prevFilterBy, pageIdx: currPage }))
+  }
+
 
   return (
     <React.Fragment>
@@ -94,10 +104,26 @@ export function BugIndex() {
         <BugsHeaderTools />
         <h1>My Bugs</h1>
       </header>
-      <BugListHeader filterBy={filterBy} setFilterBy={setFilterBy} pageCount={pageCount} onAddBug={onAddBug}/>
-      <BugTable bugs={bugs} onEditBug={onEditBug} onRemoveBug={onRemoveBug} filterBy={filterBy} setFilterBy={setFilterBy}/>
-      {(!bugs || !bugs.length) && <h1>No Bugs...</h1>}
-      {bugs.length && <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />}
+      <BugListHeader
+        filterBy={filterBy}
+        setFilterBy={setFilterBy}
+        pageCount={bugsInfo.pageCount}
+        onAddBug={onAddBug}
+      />
+      <BugTable
+        bugs={bugs}
+        onEditBug={onEditBug}
+        onRemoveBug={onRemoveBug}
+        filterBy={filterBy}
+        setFilterBy={setFilterBy}
+      />
+      <Pagination
+        onChangePage={onChangePage}
+        pageIdx={filterBy.pageIdx}
+        bugsInfo={bugsInfo}
+      />
+      {/* {(!bugs || !bugs.length) && <h1>No Bugs...</h1>}
+      {bugs.length && <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />} */}
     </React.Fragment>
   )
 }

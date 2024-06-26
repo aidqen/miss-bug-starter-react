@@ -30,14 +30,35 @@
     margin-inline-end: 2em;
 }
 
+.pagination {
+    width: 100%;
+    justify-content: end;
+    color: rgba(60, 60, 60, 0.784);
+    margin-top: 6em;
+}
+
 .pagination > * { 
     cursor: pointer;
     margin-inline: 0.5em;
     border-radius: 13px;
     padding: 0.7em;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
-.pagination > *:hover {
-    background-color: rgb(27, 58, 115);
+.pagination .arrows i {
+    cursor: pointer;
+    padding: 0.5em;
+    border-radius: 10px;
+}
+
+.pagination label {
+    font-weight:400;
+}
+
+.pagination :first-child {
+    margin-right: 1em;
+}
+
+.pagination > i:hover {
+    background-color: rgb(231, 231, 231);
 }
