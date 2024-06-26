@@ -30,7 +30,6 @@ export function BugIndex() {
   }
 
   function loadPageCount() {
-    console.log('loadPageCount')
     bugService.getPageCount().then(setPageCount)
   }
 
@@ -87,6 +86,8 @@ export function BugIndex() {
       })
   }
 
+  console.log(filterBy.sortBy);
+
   return (
     <React.Fragment>
       <header className="bugs-header">
@@ -94,7 +95,7 @@ export function BugIndex() {
         <h1>My Bugs</h1>
       </header>
       <BugListHeader filterBy={filterBy} setFilterBy={setFilterBy} pageCount={pageCount} onAddBug={onAddBug}/>
-      <BugTable bugs={bugs} onEditBug={onEditBug} onRemoveBug={onRemoveBug}/>
+      <BugTable bugs={bugs} onEditBug={onEditBug} onRemoveBug={onRemoveBug} filterBy={filterBy} setFilterBy={setFilterBy}/>
       {(!bugs || !bugs.length) && <h1>No Bugs...</h1>}
       {bugs.length && <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />}
     </React.Fragment>
