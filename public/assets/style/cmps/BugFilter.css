@@ -1,3 +1,7 @@
+.filter-container > * {
+    margin-block-end: 1em;
+}
+
 .bug-filter {
     background-color: var(--clr2bg);
 }
@@ -5,15 +9,6 @@
 .bug-filter form {
     display: grid;
     grid-template-columns: 100px 200px;
-}
-
-.filter-container > * {
-    margin-block-end: 1em;
-    color: white;
-    border-radius: 10px;
-    font-weight: 900;
-    width: max-content;
-    padding: 1em;
 }
 
 .filter-options {
@@ -24,7 +19,7 @@
     margin-inline: 1em;
 }
 
-.filter-container :is(input, select) {
+.filter-container .filter-options :is(input, select) {
     border-radius: 1em;
     border: 1.7px solid lightgray;
     height: 3em;

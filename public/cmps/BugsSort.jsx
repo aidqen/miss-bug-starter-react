@@ -1,11 +1,9 @@
 export function BugsSort({ filterBy, setFilterBy, handleChange }) {
   const { sortBy } = filterBy
 
-
-
   return (
-    <div className="sorting-container flex flex-row">
-      <div className="sorting-options">
+    <div className="sorting-container ">
+      <div className="sorting-options flex flex-row align-center">
         <label>
           Title:
           <input
@@ -39,7 +37,10 @@ export function BugsSort({ filterBy, setFilterBy, handleChange }) {
       </div>
 
       <div className="sorting-dir">
-        <input type="checkbox" name="direction" onChange={handleChange} />
+        <label>
+          Ascending:
+          <input type="checkbox" name="direction" onChange={handleChange} checked={sortBy.direction === 1 ? true : false} />
+        </label>
       </div>
     </div>
   )

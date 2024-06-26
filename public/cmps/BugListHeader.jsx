@@ -37,7 +37,7 @@ export function BugListHeader({ onAddBug, filterBy, setFilterBy, pageCount }) {
   return (
     <div className="list-header flex flex-column">
       <FolderList folder={filterBy.folder} setFilterBy={setFilterBy} />
-      <section className="filter-container flex flex-row">
+      <section className="filter-container flex flex-column">
         <BugFilter
           filterBy={filterBy}
           handleChange={handleChange}

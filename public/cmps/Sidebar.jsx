@@ -14,6 +14,7 @@ export function Sidebar() {
     <aside>
       {/* <UserMsg /> */}
       <nav>
+      <a className='profile-link active' href="#">IM</a>
         <NavLink to="/">
           <i className="fa-solid fa-house"></i>
         </NavLink>
