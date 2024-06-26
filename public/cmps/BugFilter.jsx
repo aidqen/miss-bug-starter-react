@@ -5,7 +5,7 @@ export function BugFilter({ filterBy, handleChange }) {
 
   return (
     <React.Fragment>
-      <div className="filter-options flex flex-row mx-1.5">
+      <div className="filter-options flex flex-row flex-center">
           <input
             onChange={handleChange}
             value={txt}

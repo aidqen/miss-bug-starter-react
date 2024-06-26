@@ -16,6 +16,8 @@
 @import "cmps/ToggleButton.css";
 
 @import "cmps/BugFilter.css";
+@import "cmps/BugTable.css";
+@import "cmps/BugsSort.css";
 @import "cmps/BugList.css";
 @import "cmps/BugListHeader.css";
 @import "cmps/BugPreview.css";

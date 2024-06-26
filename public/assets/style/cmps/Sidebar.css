@@ -31,3 +31,7 @@ aside nav > * {
     border-radius: 16px;
     font-size: 0.7em;
 }
+
+.profile-link {
+    margin-block-end: 2em;
+}
