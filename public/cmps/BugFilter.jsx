@@ -1,11 +1,23 @@
 
-export function BugFilter({ filterBy, handleChange }) {
+const { useState, useEffect } = React
+export function BugFilter({ setFilterBy ,filterBy, handleChange }) {
+  const [filterByToEdit, setFilterByToEdit] = useState(filterBy);
+  
+  function handleSubmit(ev) {
+    ev.preventDefault()
+    setFilterBy(filterByToEdit)
+  }
+  
+  function handleChange({ target }) {
+    const { name, value } = target
+      setFilterByToEdit(prevFilterBy => ({ ...prevFilterBy, [name]: value }))
+  }
 
-  const { txt, minSeverity } = filterBy
+  const { txt, minSeverity } = filterByToEdit
 
   return (
     <React.Fragment>
-      <div className="filter-options flex flex-row flex-center">
+      <form onSubmit={handleSubmit} className="filter-options flex flex-row align-center">
           <input
             onChange={handleChange}
             value={txt}
@@ -21,7 +33,9 @@ export function BugFilter({ filterBy, handleChange }) {
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-      </div>
+
+          <button>Filter</button>
+      </form>
   </React.Fragment>
   )
 }
