@@ -6,12 +6,12 @@ table.bug-table {
     border: none;
     font-size: 0.9em;
     color: lightslategray;
-    border-bottom: 2px solid lightgray;
+    border-bottom: 2.5px solid rgb(230, 230, 230);
 }
 
 
 table.bug-table thead {
-    background-color: rgb(242, 242, 242);
+    background-color: rgb(244, 244, 244);
     border-collapse: collapse;
     text-transform: capitalize;
     border-radius: 1em;
@@ -69,8 +69,8 @@ table.bug-table tbody tr {
     transition: background 0.1s;
 }
 
-table.bug-table tr {
-    border-bottom: 1px solid rgb(226, 226, 226);
+table.bug-table tbody tr {
+    border-bottom: 1px solid rgb(230, 230, 230);
 }
 
 table.bug-table :is(tbody, thead) :is(td, th).severity {

@@ -23,7 +23,8 @@
     border-radius: 1em;
     border: 1.7px solid lightgray;
     height: 3em;
-    width: 10em;
+    width: 15em;
+    padding-inline-start: 1em;
 }
 
 .sorting-options {

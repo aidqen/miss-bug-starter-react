@@ -37,3 +37,7 @@
     border:1.4px solid lightgray;
 }
 
+h1 {
+    color: rgb(17,28,67);
+    margin-bottom: 1.6em;
+}
