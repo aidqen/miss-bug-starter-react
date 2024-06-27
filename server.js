@@ -25,7 +25,14 @@ app.get('/api/bug', (req, res) => {
 })
 
 app.get('/api/bug/pageCount', (req, res) => {
-  bugService.getPageCount()
+  const { txt, minSeverity, sortBy, pageIdx } = req.query
+  const filterBy = {
+    txt,
+    minSeverity: +minSeverity,
+    sortBy,
+    pageIdx: false
+  }
+  bugService.getPageCount(filterBy)
   .then(response => res.send(response))
 })
 
@@ -42,7 +49,6 @@ app.post('/api/bug', (req, res) => {
     severity,
     createdAt,
   }
-  console.log(bugToSave);
   bugService.save(bugToSave).then(savedBug => res.send(savedBug))
 })
 
@@ -71,4 +77,8 @@ app.delete('/api/bug/:bugId', (req, res) => {
     console.log(bugId);
   
   bugService.remove(bugId).then(() => res.send(`Bug ${bugId} deleted`))
+})
+
+app.get('/**', (req, res) => {
+  res.sendFile(path.resolve('public/index.html'))
 })

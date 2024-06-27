@@ -33,5 +33,47 @@
     "description": "No internet connection",
     "severity": 2,
     "createdAt": 1542107359454
+  },
+  {
+    "_id": "c106",
+    "title": "Issues with connection",
+    "description": "No connections",
+    "severity": 2,
+    "createdAt": 1542107359454
+  },
+  {
+    "_id": "c107",
+    "title": "Problems",
+    "description": "No internet connection",
+    "severity": 4,
+    "createdAt": 1542107359454
+  },
+  {
+    "_id": "c108",
+    "title": "Connection problems",
+    "description": "No internet connection",
+    "severity": 2,
+    "createdAt": 1542107359454
+  },
+  {
+    "_id": "c109",
+    "title": "Fetching error",
+    "description": "Not found",
+    "severity": 5,
+    "createdAt": 1542107359454
+  },
+  {
+    "_id": "c110",
+    "title": "Connection problems",
+    "description": "No internet connection",
+    "severity": 1,
+    "createdAt": 1542107359454
+  },
+  {
+    "_id": "c111",
+    "title": "Connection problems",
+    "description": "No internet connection",
+    "severity": 2,
+    "createdAt": 1542107359454
   }
 ]

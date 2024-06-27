@@ -30,7 +30,7 @@ export function BugIndex() {
   }
 
   function loadPageCount() {
-    bugService.getPageCount().then(setBugsInfo)
+    bugService.getPageCount(filterBy).then(setBugsInfo)
   }
 
   function onRemoveBug(bugId) {
