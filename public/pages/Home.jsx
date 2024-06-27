@@ -1,8 +1,15 @@
 export function Home() {
   return (
-    <section>
-      <h2>Home is Home</h2>
-      <img src="assets/img/logo.png" />
-    </section>
+    <form onSubmit={submitUser} className="flex flex-column">
+      <h2>Login/Signup</h2>
+      <label>
+        User Name:
+        <input type="text" name="username"placeholder="Username..." />
+      </label>
+      <label>
+        Password: 
+        <input type="text" name="password" placeholder="Password..." />
+      </label>
+    </form>
   )
 }

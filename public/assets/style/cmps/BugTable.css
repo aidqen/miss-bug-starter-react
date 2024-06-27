@@ -1,5 +1,6 @@
 table.bug-table {
-    min-width: calc(100vw - var(--sidebar-size) - (3em * 2));
+    min-width: calc(100vw - var(--sidebar-size) - (4em * 2));
+    max-width: calc(100vw - var(--sidebar-size) - (3em * 2));
     height: 20em;
     border-collapse: collapse;
     border: none;
@@ -27,6 +28,7 @@ table td {
     border: none;
     margin: 0;
 }
+
 table tbody td {
     overflow: hidden;
     /* Hide text that goes beyond the box */
@@ -44,14 +46,27 @@ table.bug-table th {
     border: none;
     padding-block: 1.5em;
     cursor: pointer;
+    transition: 0.1s background;
 }
 
-table.bug-table th i{
+table.bug-table th:hover {
+    background-color: lightgray;
+}
+
+table.bug-table th i {
     margin-left: 4px;
 }
 
 table.bug-table :is(th, td) {
     padding-inline-start: 0.5em;
+}
+
+table.bug-table tbody tr:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+table.bug-table tbody tr {
+    transition: background 0.1s;
 }
 
 table.bug-table tr {
@@ -96,18 +111,45 @@ table.bug-table :is(tbody, thead) :is(td, th).severity {
     /* border: 1px solid lightgray; */
     border-radius: 1em;
     font-weight: 200;
-    min-width: 8.5em ;
+    min-width: 8.5em;
 }
 
-.dir-popdown > * {
+.dir-popdown>* {
     padding: 8px;
     transition: 0.2s;
     border-radius: 10px;
     margin: 0;
-    
+
 }
 
-.dir-popdown > *:hover {
+.dir-popdown>*:hover {
     background-color: lightgray;
-    
+}
+
+.bug-actions>* {
+    padding: 0.5em;
+    margin-inline: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.bug-actions .remove-bug-btn {
+    background-color: rgb(252, 179, 179);
+    color: rgb(198, 25, 25);
+}
+
+.bug-actions .remove-bug-btn:hover {
+    background-color: rgb(198, 25, 25);
+
+    color: rgb(252, 179, 179);
+}
+
+.bug-actions .edit-bug-btn {
+    background-color: rgb(181, 227, 255);
+    color: rgb(28, 141, 211);
+}
+.bug-actions .edit-bug-btn:hover {
+    background-color: rgb(28, 141, 211);
+    color: rgb(181, 227, 255);
 }
