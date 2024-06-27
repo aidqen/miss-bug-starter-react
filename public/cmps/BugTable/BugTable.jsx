@@ -21,10 +21,9 @@ export function BugTable({ bugs, onRemoveBug, onEditBug, setFilterBy, filterBy }
             <tr key={bug._id}>
               <BugRow
                 bug={bug}
-                onRemoveBug={onRemoveBug}
-                onEditBug={onEditBug}
               />
-              <BugActions />
+              <BugActions onRemoveBug={onRemoveBug}
+                onEditBug={onEditBug}/>
             </tr>
           )
         })}

@@ -4,22 +4,15 @@ import { Pagination } from './Pagination.jsx'
 
 export function BugListHeader({ onAddBug, filterBy, setFilterBy, pageCount }) {
 
-
-  function handleChange({ target }) {
-    const { name, value } = target
-      setFilterBy(prevFilterBy => ({ ...prevFilterBy, [name]: value }))
-  }
-
   return (
     <div className="list-header flex flex-column">
       <FolderList folder={filterBy.folder} setFilterBy={setFilterBy} />
-      <section className="filter-container flex flex-column">
+      <section className="filter-container flex flex-row justify-between">
         <BugFilter
           filterBy={filterBy}
-          handleChange={handleChange}
+          setFilterBy={setFilterBy}
         />
-        {/* <Pagination onChangePage={onChangePage} pageIdx={filterBy.pageIdx}/> */}
-        <button className="flex flex-row align-center" onClick={onAddBug}>
+        <button className="add-bug-btn flex flex-row align-center" onClick={onAddBug}>
           <i className="fa-solid fa-plus"></i>
           Create New Bug
         </button>

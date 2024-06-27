@@ -38,6 +38,7 @@ export function BugTableHead({ filterBy, handleChange }) {
             </th>
           )
         })}
+        <th></th>
       </tr>
     </thead>
   )

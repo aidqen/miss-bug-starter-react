@@ -1,4 +1,5 @@
 import { utilService } from "../../services/util.service.js"
+import { BugActions } from "./BugActions.jsx"
 
 export function BugRow({ bug, onRemoveBug, onEditBug }) {
   const { title, severity, description, createdAt, _id } = bug
