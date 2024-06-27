@@ -7,23 +7,9 @@
     "createdAt": 1542107359454
   },
   {
-    "_id": "c105",
-    "title": "Connection problems",
-    "description": "No internet connection",
-    "severity": 2,
-    "createdAt": 1542107359454
-  },
-  {
     "_id": "c106",
     "title": "Issues with connection",
     "description": "No connections",
-    "severity": 2,
-    "createdAt": 1542107359454
-  },
-  {
-    "_id": "c108",
-    "title": "Connection problems",
-    "description": "No internet connection",
     "severity": 2,
     "createdAt": 1542107359454
   },
@@ -32,13 +18,6 @@
     "title": "Connection problems",
     "description": "No internet connection",
     "severity": 2,
-    "createdAt": 1542107359454
-  },
-  {
-    "_id": "c101",
-    "title": "Cannot save a new car",
-    "description": "problem when clicking Save",
-    "severity": 3,
     "createdAt": 1542107359454
   },
   {
@@ -54,6 +33,11 @@
     "description": "Unknown error",
     "severity": 3,
     "createdAt": 1542107359454
+  },
+  {
+    "_id": "UDUXkz",
+    "severity": 3,
+    "createdAt": 1719504375725
   },
   {
     "_id": "c104",
@@ -82,5 +66,10 @@
     "description": "Someone set the server on fire",
     "severity": 5,
     "createdAt": 1719489951614
+  },
+  {
+    "_id": "zVz40t",
+    "severity": 5,
+    "createdAt": 1719504399443
   }
 ]

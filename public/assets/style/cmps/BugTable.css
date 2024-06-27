@@ -1,7 +1,7 @@
 table.bug-table {
     min-width: calc(100vw - var(--sidebar-size) - (4em * 2));
     max-width: calc(100vw - var(--sidebar-size) - (3em * 2));
-    height: 20em;
+    height: 30em;
     border-collapse: collapse;
     border: none;
     font-size: 0.9em;
@@ -67,6 +67,7 @@ table.bug-table tbody tr:hover {
 
 table.bug-table tbody tr {
     transition: background 0.1s;
+    max-height:2em;
 }
 
 table.bug-table tbody tr {
