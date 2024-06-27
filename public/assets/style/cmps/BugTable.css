@@ -62,7 +62,8 @@ table.bug-table :is(th, td) {
 }
 
 table.bug-table tbody tr:hover {
-    background-color: rgb(230, 230, 230);
+    /* background-color: rgb(246, 246, 246); */
+    box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.353);
 }
 
 table.bug-table tbody tr {
@@ -73,7 +74,6 @@ table.bug-table tbody tr {
 table.bug-table tbody tr {
     border-bottom: 1px solid rgb(230, 230, 230);
 }
-
 table.bug-table :is(tbody, thead) :is(td, th).severity {
     text-align: start;
 }
