@@ -1,3 +1,4 @@
+import path from 'path'
 import express from 'express'
 import { bugService } from './services/bug.service.js'
 import cookieParser from 'cookie-parser'
@@ -24,7 +25,7 @@ app.get('/api/bug', (req, res) => {
   bugService.query(filterBy).then(bugs => res.send(bugs))
 })
 
-app.get('/api/bug/pageCount', (req, res) => {
+app.get('/api/bug/bugListInfo', (req, res) => {
   const { txt, minSeverity, sortBy, pageIdx } = req.query
   const filterBy = {
     txt,
@@ -32,7 +33,7 @@ app.get('/api/bug/pageCount', (req, res) => {
     sortBy,
     pageIdx: false
   }
-  bugService.getPageCount(filterBy)
+  bugService.getBugListInfo(filterBy)
   .then(response => res.send(response))
 })
 
