@@ -1,5 +1,4 @@
 export function BugActions({ bug, onRemoveBug, onEditBug }) {
-  console.log(bug)
   return (
     <React.Fragment>
       <td className="bug-actions">

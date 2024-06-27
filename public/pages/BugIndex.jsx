@@ -20,7 +20,6 @@ export function BugIndex() {
   const [bugsInfo, setBugsInfo] = useState(
     { bugsCount: 0, pageCount: 0, pageSize: 0 })
 
-  console.log(bugsInfo.bugsCount);
   useEffect(() => {
     loadBugs()
   }, [filterBy])
