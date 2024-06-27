@@ -12,7 +12,6 @@ const PAGE_SIZE = 4
 var bugs = utilService.readJsonFile('data/bugs.json')
 
 function query(filterBy) {
-  // console.log(filterBy);
   var filteredBugs = bugs
   if (!filterBy) return Promise.resolve(filteredBugs)
   
@@ -58,9 +57,10 @@ function query(filterBy) {
         break
     }
   }
-
-  const startIdx = pageIdx * PAGE_SIZE
-  filteredBugs = filteredBugs.slice(startIdx, startIdx + PAGE_SIZE)
+  if (filterBy.pageIdx) {
+    const startIdx = pageIdx * PAGE_SIZE
+    filteredBugs = filteredBugs.slice(startIdx, startIdx + PAGE_SIZE)
+  }
   return Promise.resolve(filteredBugs)
 }
 
@@ -69,11 +69,9 @@ function getById(bugId) {
   return Promise.resolve(bug)
 }
 
-function getPageCount() {
-  return query()
+function getPageCount(filterBy) {
+  return query(filterBy)
           .then(bugs => {
-            console.log(bugs.length);
-            console.log(Math.floor(bugs.length / PAGE_SIZE));
             return {
               bugsCount: bugs.length,
               pageCount: Math.floor(bugs.length / PAGE_SIZE) + 1

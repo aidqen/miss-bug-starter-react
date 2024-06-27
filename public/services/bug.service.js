@@ -15,8 +15,8 @@ function query(filterBy) {
   return axios.get(BASE_URL, { params: filterBy }).then(res => res.data)
 }
 
-function getPageCount() {
-  return axios.get('/api/bug/pageCount').then(res => res.data)
+function getPageCount(filterBy) {
+  return axios.get('/api/bug/pageCount', { params: filterBy }).then(res => res.data)
 }
 
 function getById(bugId) {
