@@ -22,7 +22,7 @@ export function BugTable({ bugs, onRemoveBug, onEditBug, setFilterBy, filterBy }
               <BugRow
                 bug={bug}
               />
-              <BugActions onRemoveBug={onRemoveBug}
+              <BugActions bug={bug} onRemoveBug={onRemoveBug}
                 onEditBug={onEditBug}/>
             </tr>
           )

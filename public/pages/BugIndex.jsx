@@ -17,20 +17,25 @@ export function BugIndex() {
     pageIdx: 0,
     folder: 'My Bugs',
   })
-  const [bugsInfo, setBugsInfo] = useState({ bugsCount: 0, pageCount: 0 })
+  const [bugsInfo, setBugsInfo] = useState(
+    { bugsCount: 0, pageCount: 0, pageSize: 0 })
 
   console.log(bugsInfo.bugsCount);
   useEffect(() => {
     loadBugs()
-    loadPageCount()
   }, [filterBy])
+
+  useEffect(() => {
+    loadBugListInfo()
+  }, [bugs])
+  
 
   function loadBugs() {
     bugService.query(filterBy).then(setBugs)
   }
 
-  function loadPageCount() {
-    bugService.getPageCount(filterBy).then(setBugsInfo)
+  function loadBugListInfo() {
+    bugService.getBugListInfo(filterBy).then(setBugsInfo)
   }
 
   function onRemoveBug(bugId) {
