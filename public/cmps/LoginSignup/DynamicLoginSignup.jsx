@@ -5,20 +5,49 @@ const { useState } = React
 
 export function DynamicLoginSignup() {
   const [loginOrSignup, setLoginOrSignup] = useState('login')
+  const [credentials, setCredentials] = useState({
+    username: '',
+    password: '',
+    fullName: '',
+  })
 
-  function submitUser(params) {
+  function handleChange({ target }) {
+    const { name: field, value } = target
+    setCredentials(prevCreds => ({ ...prevCreds, [field]: value }))
+  }
+
+  function handleSubmit({target}) {
+    console.log(target);
     return ''
   }
 
-  switch (loginOrSignup) {
-    case 'login':
-      return <Login submitUser={submitUser} setLoginOrSignup={setLoginOrSignup}/>
+  return (
+    <form onSubmit={handleSubmit} className='login-signup-form flex flex-column'>
+      <label htmlFor="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        value={credentials.username}
+        onChange={handleChange}
+      />
 
-    case 'signup':
-      return <Signup submitUser={submitUser} setLoginOrSignup={setLoginOrSignup}/>
+      <label htmlFor="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        value={credentials.password}
+        onChange={handleChange}
+      />
 
-
-    default:
-      break
-  }
+      <button type="submit">Submit</button>
+      <button
+        onClick={() =>
+          setLoginOrSignup(loginOrSignup === 'login' ? 'signup' : 'login')
+        }>
+        {loginOrSignup === 'login' ? 'Switch to Signup' : 'Switch to Login'}
+      </button>
+    </form>
+  )
 }
