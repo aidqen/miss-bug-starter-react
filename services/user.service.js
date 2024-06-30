@@ -29,6 +29,7 @@ function validateToken(token) {
 }
 
 function checkLogin({ username, password }) {
+    console.log(users);
     var user = users.find(user => user.username === username)
     if (user)  {
         user = {

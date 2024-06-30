@@ -5,16 +5,16 @@ import { Signup } from './Signup.jsx'
 
 const { useState } = React
 
-export function LoginSignup({ setUser }) {
+export function LoginSignup({ setUser, user }) {
   const [loginOrSignup, setLoginOrSignup] = useState('login')
   const [credentials, setCredentials] = useState({
-    userName: '',
+    username: '',
     password: '',
-    fullName: '',
+    fullname: '',
   })
 
   const isLogin = loginOrSignup === 'login'
-  const { userName, password, fullName } = credentials
+  const { username, password, fullname } = credentials
 
   function handleChange({ target }) {
     const { name: field, value } = target
@@ -27,21 +27,22 @@ export function LoginSignup({ setUser }) {
   }
 
   function login(credentials) {
+    console.log('credentials:', credentials)
     userService
       .login(credentials)
       .then(setUser)
       .then(() => {
-        showSuccessMsg(`Successfully logged into ${fullName}`)
+        showSuccessMsg(`Successfully logged into ${fullname}`)
       })
-      .catch(err => showErrorMsg('Oops try again'))
+      .catch(err => showErrorMsg('Oops try again', err))
     }
     
     function signup(credentials) {
       userService
       .signup(credentials)
       .then(setUser)
-      showSuccessMsg(`Successfully Signed Up ${fullName}`)      
-      .catch(err => showErrorMsg('Oops try again'))
+      showSuccessMsg(`Successfully Signed Up ${fullname}`)      
+      .catch(err => showErrorMsg('Oops try again', err))
   }
 
   function toggleLogin(ev) {
@@ -56,22 +57,22 @@ export function LoginSignup({ setUser }) {
     >
       {!isLogin && (
         <React.Fragment>
-          <label htmlFor="fullName">Full Name:</label>
+          <label htmlFor="fullname">Full Name:</label>
           <input
             type="text"
-            id="fullName"
-            name="fullName"
-            value={fullName}
+            id="fullname"
+            name="fullname"
+            value={fullname}
             onChange={handleChange}
           />
         </React.Fragment>
       )}
-      <label htmlFor="userName">Username:</label>
+      <label htmlFor="username">username:</label>
       <input
         type="text"
-        id="userName"
-        name="userName"
-        value={userName}
+        id="username"
+        name="username"
+        value={username}
         onChange={handleChange}
       />
 

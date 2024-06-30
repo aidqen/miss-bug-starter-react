@@ -21,7 +21,7 @@ app.get('/api/bug', (req, res) => {
     txt,
     minSeverity: +minSeverity,
     sortBy,
-    pageIdx
+    pageIdx,
   }
   bugService.query(filterBy).then(bugs => res.send(bugs))
 })
@@ -32,17 +32,13 @@ app.get('/api/bug/bugListInfo', (req, res) => {
     txt,
     minSeverity: +minSeverity,
     sortBy,
-    pageIdx: false
+    pageIdx: false,
   }
-  bugService.getBugListInfo(filterBy)
-  .then(response => res.send(response))
+  bugService.getBugListInfo(filterBy).then(response => res.send(response))
 })
 
-
-
-
 app.post('/api/bug', (req, res) => {
-  console.log(req.body);
+  console.log(req.body)
   const { _id, title, description, severity, createdAt } = req.body
   const bugToSave = {
     _id,
@@ -53,6 +49,7 @@ app.post('/api/bug', (req, res) => {
   }
   bugService.save(bugToSave).then(savedBug => res.send(savedBug))
 })
+
 
 app.get('/api/bug/:bugId', (req, res) => {
   const { bugId } = req.params
@@ -65,7 +62,8 @@ app.get('/api/bug/:bugId', (req, res) => {
   if (!visitedBugs.includes(bugId)) visitedBugs.push(bugId)
   res.cookie('visitedBugs', visitedBugs, { maxAge: 10000 })
 
-  return bugService.getById(bugId)
+  return bugService
+    .getById(bugId)
     .then(bug => res.send(bug))
     .catch(err => {
       res.status(500).send('error')
@@ -74,10 +72,10 @@ app.get('/api/bug/:bugId', (req, res) => {
 })
 
 app.delete('/api/bug/:bugId', (req, res) => {
-    const {bugId} = req.params
+  const { bugId } = req.params
 
-    console.log(bugId);
-  
+  console.log(bugId)
+
   bugService.remove(bugId).then(() => res.send(`Bug ${bugId} deleted`))
 })
 
@@ -85,7 +83,18 @@ app.get('/**', (req, res) => {
   res.sendFile(path.resolve('public/index.html'))
 })
 
-app.get('/api/auth/login', (req, res) => {
+app.post('/api/auth/login', (req, res) => {
   const { password, username } = req.body
-  userService.checkLogin()
+  const credentials = { password, username }
+
+  userService.checkLogin(credentials).then(user => {
+    console.log('user:', user)
+    if (user) {
+      const loginToken = userService.getLoginToken(user)
+      res.cookie('loginToken', loginToken)
+      res.send(user)
+    } else {
+      res.status(401).send('Invalid login')
+    }
+  })
 })
