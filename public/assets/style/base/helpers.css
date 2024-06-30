@@ -20,6 +20,10 @@
     align-items: center;
 }
 
+.flex.justify-end{
+    justify-content: flex-end;
+}
+
 /* text helpers */
 
 .colored-text {

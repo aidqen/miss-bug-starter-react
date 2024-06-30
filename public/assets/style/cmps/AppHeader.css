@@ -1,0 +1,45 @@
+.app-header {
+    padding-top: 1em;
+    /* border-bottom: 1px solid var(--bgc-aside); */
+    height: 5em;
+    color: var(--bgc-aside);
+    margin-bottom: 2em;
+}
+
+.app-header .personal-info {
+    align-items: center;
+    color: rgb(17,28,67);
+    width: max-content;
+    border-bottom: 1px solid var(--bgc-aside);
+}
+
+.app-header .personal-info h2 {
+    font-size: 1em;
+    font-weight: 200;
+    margin: 0 2em 0 0;
+    width: max-content;
+}
+
+.app-header .personal-info h2 span {
+    margin-inline-start: 0.5em;
+    font-weight: bold;
+}
+
+.app-header .personal-info button {
+    width: 6em;
+    background-color: var(--active-content);
+    color: var(--bgc-aside);
+    border: 1px solid var(--active-content);
+    border-radius: 0.5em;
+    padding: 0.5em;
+    cursor: pointer;
+    transition: 0.2s;
+    /* font-weight bold */
+    font-weight: bold;
+}
+/* style this button beautifuly with hover*/
+.app-header .personal-info button:hover {
+    border: 1px solid var(--bgc-aside);
+    background-color: var(--bgc-main);
+}
+
