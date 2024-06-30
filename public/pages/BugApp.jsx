@@ -1,4 +1,4 @@
-import { AppHeader } from "../cmps/AppHeader.jsx";
+import { AppHeader } from "../cmps/Header/AppHeader.jsx";
 import { LoginSignup } from "../cmps/LoginSignup.jsx";
 import { userService } from "../services/user.service.js";
 import { BugIndex } from "./BugIndex.jsx";

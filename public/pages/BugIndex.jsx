@@ -1,12 +1,12 @@
 import { bugService } from '../services/bug.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { BugsHeaderTools } from '../cmps/BugsHeaderTools.jsx'
-import { BugListHeader } from '../cmps/BugListHeader.jsx'
+import { BugsHeaderTools } from '../cmps/Header/BugsHeaderTools.jsx'
+import { BugListHeader } from '../cmps/BugTable/BugListHeader.jsx'
 import { BugTable } from '../cmps/BugTable/BugTable.jsx'
-import { Pagination } from '../cmps/Pagination.jsx'
+import { Pagination } from '../cmps/BugTable/Pagination.jsx'
 import { userService } from '../services/user.service.js'
 import { LoginSignup } from '../cmps/LoginSignup.jsx'
-import { AppHeader } from '../cmps/AppHeader.jsx'
+import { AppHeader } from '../cmps/Header/AppHeader.jsx'
 
 const { useState, useEffect } = React
 
