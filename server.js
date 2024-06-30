@@ -2,6 +2,7 @@ import path from 'path'
 import express from 'express'
 import { bugService } from './services/bug.service.js'
 import cookieParser from 'cookie-parser'
+import { userService } from './services/user.service.js'
 
 const app = express()
 
@@ -82,4 +83,9 @@ app.delete('/api/bug/:bugId', (req, res) => {
 
 app.get('/**', (req, res) => {
   res.sendFile(path.resolve('public/index.html'))
+})
+
+app.get('/api/auth/login', (req, res) => {
+  const { password, username } = req.body
+  userService.checkLogin()
 })

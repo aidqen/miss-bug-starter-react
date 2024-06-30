@@ -8,13 +8,13 @@ const { useState } = React
 export function LoginSignup({ setUser }) {
   const [loginOrSignup, setLoginOrSignup] = useState('login')
   const [credentials, setCredentials] = useState({
-    username: '',
+    userName: '',
     password: '',
     fullName: '',
   })
 
   const isLogin = loginOrSignup === 'login'
-  const { username, password, fullName } = credentials
+  const { userName, password, fullName } = credentials
 
   function handleChange({ target }) {
     const { name: field, value } = target
@@ -66,12 +66,12 @@ export function LoginSignup({ setUser }) {
           />
         </React.Fragment>
       )}
-      <label htmlFor="username">Username:</label>
+      <label htmlFor="userName">Username:</label>
       <input
         type="text"
-        id="username"
-        name="username"
-        value={username}
+        id="userName"
+        name="userName"
+        value={userName}
         onChange={handleChange}
       />
 
