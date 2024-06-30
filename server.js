@@ -10,8 +10,8 @@ app.use(cookieParser())
 app.use(express.json())
 
 app.get('/', (req, res) => res.send('Hello there'))
-app.listen(3030, () =>
-  console.log('Server ready at port http://127.0.0.1:3030')
+app.listen(3031, () =>
+  console.log('Server ready at port http://127.0.0.1:3031')
 )
 
 app.get('/api/bug', (req, res) => {
