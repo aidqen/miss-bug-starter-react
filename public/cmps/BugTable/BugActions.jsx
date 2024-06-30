@@ -10,6 +10,9 @@ export function BugActions({ bug, onRemoveBug, onEditBug }) {
           className="edit-bug-btn fa-regular fa-trash-can"
           onClick={() => onRemoveBug(bug._id)}
         ></i>
+        <i
+          className="details-bug-btn fa-regular fa-file"
+          onClick={() => onRemoveBug(bug._id)}></i>
       </td>
     </React.Fragment>
   )
