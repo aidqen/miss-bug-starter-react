@@ -1,3 +1,4 @@
+const { Link } = ReactRouterDOM
 export function BugActions({ bug, onRemoveBug, onEditBug }) {
   return (
     <React.Fragment>
@@ -8,11 +9,11 @@ export function BugActions({ bug, onRemoveBug, onEditBug }) {
         ></i>
         <i
           className="edit-bug-btn fa-regular fa-trash-can"
-          onClick={() => onRemoveBug(bug._id)}
+          onClick={() => onRemoveBug(bug._id, bug.owner)}
         ></i>
-        <i
-          className="details-bug-btn fa-regular fa-file"
-          onClick={() => onRemoveBug(bug._id)}></i>
+        <Link to={`/bug/${bug._id}`}>
+          <i className="details-bug-btn fa-regular fa-file"></i>
+        </Link>
       </td>
     </React.Fragment>
   )

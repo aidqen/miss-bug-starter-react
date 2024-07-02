@@ -16,9 +16,8 @@ export function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/bug" element={<BugApp />}>
-            <Route path="/bug/:bugId" element={<BugDetails />} />
-          </Route>
+          <Route path="/bug" element={<BugApp />}></Route>
+          <Route path="/bug/:bugId" element={<BugDetails />} />
           <Route path="/about" element={<AboutUs />} />
         </Routes>
         <UserMsg />
