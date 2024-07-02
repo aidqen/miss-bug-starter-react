@@ -1,8 +1,9 @@
 import { BugFilter } from './BugFilter.jsx'
 import { FolderList } from './FolderList.jsx'
-import { Pagination } from './Pagination.jsx'
+const { useNavigate, Link } = ReactRouterDOM
 
-export function BugListHeader({ onAddBug, filterBy, setFilterBy, pageCount }) {
+export function BugListHeader({ filterBy, setFilterBy }) {
+  const navigate = useNavigate()
 
   return (
     <div className="list-header flex flex-column">
@@ -12,10 +13,10 @@ export function BugListHeader({ onAddBug, filterBy, setFilterBy, pageCount }) {
           filterBy={filterBy}
           setFilterBy={setFilterBy}
         />
-        <button className="add-bug-btn flex flex-row align-center" onClick={onAddBug}>
+        <Link className="add-bug-btn flex flex-row align-center" to="/bug/add">
           <i className="fa-solid fa-plus"></i>
           Create New Bug
-        </button>
+        </Link>
       </section>
     </div>
   )
