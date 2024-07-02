@@ -35,14 +35,13 @@ export function LoginSignup({ setUser, user }) {
         showSuccessMsg(`Successfully logged into ${fullname}`)
       })
       .catch(err => showErrorMsg('Oops try again', err))
-    }
-    
-    function signup(credentials) {
-      userService
-      .signup(credentials)
-      .then(setUser)
-      showSuccessMsg(`Successfully Signed Up ${fullname}`)      
-      .catch(err => showErrorMsg('Oops try again', err))
+  }
+
+  function signup(credentials) {
+    userService.signup(credentials).then(setUser)
+    showSuccessMsg(`Successfully Signed Up ${fullname}`).catch(err =>
+      showErrorMsg('Oops try again', err)
+    )
   }
 
   function toggleLogin(ev) {
@@ -85,7 +84,7 @@ export function LoginSignup({ setUser, user }) {
         onChange={handleChange}
       />
 
-      <button type="submit">{isLogin ? 'Login' : 'Signup'}</button>
+      <button type="submit" onClick={handleSubmit}>{isLogin ? 'Login' : 'Signup'}</button>
       <button onClick={toggleLogin}>
         {isLogin ? "Don't have a user? Signup" : 'Already have a user? Login'}
       </button>
