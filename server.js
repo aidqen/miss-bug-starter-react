@@ -16,7 +16,6 @@ app.listen(3031, () =>
 )
 
 app.get('/api/bug', (req, res) => {
-  console.log(req.query);
   const { txt, minSeverity, sortBy, pageIdx, folder, userId } = req.query
   const filterBy = {
     txt,
@@ -43,7 +42,6 @@ app.get('/api/bug/bugListInfo', (req, res) => {
 })
 
 app.post('/api/bug', (req, res) => {
-  console.log(req.body)
   const { _id, title, description, severity, createdAt, owner, user } = req.body
   if (!user) return
   if (owner && owner._id !== user._id) {
