@@ -8,7 +8,7 @@
 
 .app-header .personal-info {
     align-items: center;
-    color: rgb(17,28,67);
+    color: rgb(125, 125, 125);
     width: max-content;
     border-bottom: 1px solid rgb(210, 210, 210);
 }
@@ -23,6 +23,7 @@
 .app-header .personal-info h2 span {
     margin-inline-start: 0.5em;
     font-weight: bold;
+    color: var(--bgc-aside);
 }
 
 .app-header .personal-info button {

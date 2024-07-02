@@ -5,7 +5,8 @@ table.bug-table {
     border-collapse: collapse;
     border: none;
     font-size: 0.9em;
-    color: lightslategray;
+    color: black;
+    /* color: lightslategray; */
     border-bottom: 2.5px solid rgb(230, 230, 230);
 }
 
@@ -36,6 +37,7 @@ table tbody td {
     /* Prevent text from wrapping */
     text-overflow: ellipsis;
 }
+
 
 table.bug-table th {
     position: relative;
@@ -127,7 +129,7 @@ table.bug-table :is(tbody, thead) :is(td, th).severity {
     background-color: lightgray;
 }
 
-.bug-actions>* {
+.bug-actions i {
     padding: 0.5em;
     margin-inline: 8px;
     border-radius: 8px;

@@ -16,9 +16,14 @@ nav {
     gap: 37px;
 }
 
+
 a.active {
     color: var(--bgc-aside);
     background-color: var(--active-content);
+}
+a.active:hover {
+    color: var(--bgc-aside);
+    background-color: rgb(148, 135, 198);
 }
 
 aside nav > * {
@@ -30,6 +35,13 @@ aside nav > * {
     color: rgb(241, 212, 241);
     border-radius: 16px;
     font-size: 0.7em;
+    transition: background 0.2s;
+}
+
+aside nav > *:hover {
+    color: var(--active-content);
+    background-color: rgb(37, 44, 63);
+
 }
 
 .profile-link {
