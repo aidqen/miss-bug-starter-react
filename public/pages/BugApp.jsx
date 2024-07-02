@@ -3,7 +3,7 @@ import { LoginSignup } from '../cmps/LoginSignup.jsx'
 import { showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
 import { BugIndex } from './BugIndex.jsx'
-
+const { Outlet } = ReactRouterDOM
 const { useState } = React
 
 export function BugApp() {
@@ -23,6 +23,7 @@ export function BugApp() {
       <AppHeader user={user} logout={logout}/>
       {!user && <LoginSignup setUser={setUser} user={user} />}
       {user && <BugIndex user={user} />}
+      <Outlet />
     </React.Fragment>
   )
 }

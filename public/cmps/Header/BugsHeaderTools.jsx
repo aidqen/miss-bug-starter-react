@@ -1,4 +1,4 @@
-export function BugsHeaderTools({}) {
+export function BugsHeaderTools() {
   return (
     <div className="bug-header-tools">
       <i className="fa-solid fa-magnifying-glass"></i>

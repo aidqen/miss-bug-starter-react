@@ -11,7 +11,7 @@ export const bugService = {
   getBugListInfo,
 }
 
-function query(filterBy, userId) {
+function query(filterBy) {
   return axios.get(BASE_URL, {params: filterBy }).then(res => res.data)
 }
 

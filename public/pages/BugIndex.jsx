@@ -1,12 +1,8 @@
 import { bugService } from '../services/bug.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { BugsHeaderTools } from '../cmps/Header/BugsHeaderTools.jsx'
 import { BugListHeader } from '../cmps/BugTable/BugListHeader.jsx'
 import { BugTable } from '../cmps/BugTable/BugTable.jsx'
-import { Pagination } from '../cmps/BugTable/Pagination.jsx'
-import { userService } from '../services/user.service.js'
-import { LoginSignup } from '../cmps/LoginSignup.jsx'
-import { AppHeader } from '../cmps/Header/AppHeader.jsx'
+import { Pagination } from '../cmps/Pagination.jsx'
 
 const { useState, useEffect } = React
 
@@ -26,6 +22,7 @@ export function BugIndex({user}) {
   useEffect(() => {
     loadBugs()
   }, [filterBy])
+
 
   useEffect(() => {
     loadBugListInfo()
@@ -54,17 +51,12 @@ export function BugIndex({user}) {
       })
   }
 
-  function onAddBug() {
-    const bug = {
-      title: prompt('Bug title?'),
-      severity: +prompt('Bug severity?'),
-      description: prompt('Bug description'),
-    }
+  function onAddBug(data) {
     bugService
-      .save(bug)
+      .save(data, user)
       .then(savedBug => {
         console.log('Added Bug', savedBug)
-        setBugs(prevBugs => [...prevBugs, savedBug])
+        loadBugs()
         showSuccessMsg('Bug added')
       })
       .catch(err => {
@@ -74,10 +66,9 @@ export function BugIndex({user}) {
   }
 
   function onEditBug(bug) {
-    const severity = +prompt('New severity?')
     const bugToSave = { ...bug, severity }
     bugService
-      .save(bugToSave)
+      .save(bugToSave, user)
       .then(savedBug => {
         console.log('Updated Bug:', savedBug)
         setBugs(prevBugs =>
@@ -114,9 +105,9 @@ export function BugIndex({user}) {
         filterBy={filterBy}
         setFilterBy={setFilterBy}
         pageCount={bugsInfo.pageCount}
-        onAddBug={onAddBug}
       />
       <BugTable
+        user={user}
         bugs={bugs}
         onEditBug={onEditBug}
         onRemoveBug={onRemoveBug}
