@@ -25,7 +25,7 @@
     border-radius: 10px;
 }
 
-.filter-container>button {
+.filter-container>a {
     background-color: rgb(17, 28, 67);
     color: rgb(233, 233, 233);
     font-weight:200;
@@ -34,7 +34,7 @@
     font-size: 0.9em;
     transition: 0.1s;
     height: 3em;
-    /* give this a border of 1px with a color of the bgc */
+    gap: 0.5em;
     border: 1px rgb(17, 28, 67) solid;
 }
 
@@ -50,11 +50,7 @@
     margin-right: 1.3em;
 }
 
-
-/* can you put .login-signup-form in the middle of the x-axis */
-
 .login-signup-form {
-/* margin-top of 3em */
     display: flex;
     flex-direction: column;
     gap: 0.6em;

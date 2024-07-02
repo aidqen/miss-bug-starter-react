@@ -1,11 +1,76 @@
-.bug-edit form {
+/* can you give me styling for BugEdit form  with position absolute*/
+.bug-edit {
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    font-size: 1.5rem;
-    font-family: 'Edu VIC WA NT Beginner', cursive;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    z-index: 100;
 }
 
-.bug-edit form input {
-    max-width: 300px;
-    margin-bottom: 15px;
+.bug-edit label {
+    display: block;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.bug-edit input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.bug-edit input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* style .bug-edit a to look like an exit button */
+.bug-edit a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #333;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: lighter;
+    padding: 0.3em 0.5em;
+    border-radius: 0.8em;
+    width: 1.5em;
+    height: 1.5em;
+    transition: background-color 0.1s, color 0.1s;
+}
+
+.bug-edit a:hover {
+    background-color: red;
+    color: white;
+}
+
+.bug-edit button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.1s;
+    margin-inline: 0;
+}
+
+.bug-edit>* {
+    width: 100%;
 }
