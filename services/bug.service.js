@@ -15,7 +15,11 @@ function query(filterBy) {
   var filteredBugs = bugs
   if (!filterBy) return Promise.resolve(filteredBugs)
   
-  const { txt, minSeverity, sortBy, pageIdx } = filterBy
+  const { txt, minSeverity, sortBy, pageIdx, folder, userId } = filterBy
+  if (folder === 'My Bugs') {
+    filteredBugs = filteredBugs.filter(bug => {
+      return bug.owner._id === userId})
+  }
   if (txt) {
     const regExp = new RegExp(txt, 'i')
     filteredBugs = bugs.filter(
@@ -80,15 +84,22 @@ function getBugListInfo(filterBy) {
           })
 }
 
-function remove(bugId) {
+function remove(bugId, loggedinUser) {
   const idx = bugs.findIndex(bug => bug._id === bugId)
-  bugs.splice(idx, 1)
 
+  if (idx === -1) return Promise.reject('No such bug')
+
+  if (bugs[idx].owner._id !== loggedinUser._id && !loggedinUser.isAdmin) {
+      return Promise.reject('Not authorized delete this bug')
+  }
+
+  bugs.splice(idx, 1)
   return _savebugsToFile()
 }
 
+
 function save(bugToSave) {
-  console.log(bugToSave)
+  // console.log(bugToSave)
   if (bugToSave._id) {
     const idx = bugs.findIndex(bug => bug._id === bugToSave._id)
     bugs.splice(idx, 1, bugToSave)
@@ -97,6 +108,7 @@ function save(bugToSave) {
     bugToSave.createdAt = Date.now()
     bugs.push(bugToSave)
   }
+  // console.log(bugToSave);
   return _savebugsToFile().then(() => bugToSave)
 }
 

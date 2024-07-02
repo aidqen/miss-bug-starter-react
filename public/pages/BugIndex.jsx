@@ -18,6 +18,7 @@ export function BugIndex({user}) {
     sortBy: { type: 'severity', direction: '1' },
     pageIdx: 0,
     folder: 'My Bugs',
+    userId: user._id
   })
   const [bugsInfo, setBugsInfo] = useState(
     { bugsCount: 0, pageCount: 0, pageSize: 0 })

@@ -16,36 +16,46 @@ app.listen(3031, () =>
 )
 
 app.get('/api/bug', (req, res) => {
-  const { txt, minSeverity, sortBy, pageIdx } = req.query
+  console.log(req.query);
+  const { txt, minSeverity, sortBy, pageIdx, folder, userId } = req.query
   const filterBy = {
     txt,
     minSeverity: +minSeverity,
     sortBy,
     pageIdx,
+    folder,
+    userId
   }
   bugService.query(filterBy).then(bugs => res.send(bugs))
 })
 
 app.get('/api/bug/bugListInfo', (req, res) => {
-  const { txt, minSeverity, sortBy, pageIdx } = req.query
+  const { txt, minSeverity, sortBy, folder, userId } = req.query
   const filterBy = {
     txt,
     minSeverity: +minSeverity,
     sortBy,
     pageIdx: false,
+    folder,
+    userId
   }
   bugService.getBugListInfo(filterBy).then(response => res.send(response))
 })
 
 app.post('/api/bug', (req, res) => {
   console.log(req.body)
-  const { _id, title, description, severity, createdAt } = req.body
+  const { _id, title, description, severity, createdAt, owner, user } = req.body
+  if (!user) return
+  if (owner && owner._id !== user._id) {
+    return res.status(401).send('You are not allowed to edit this bug')
+  }
   const bugToSave = {
     _id,
     title,
     description,
     severity,
     createdAt,
+    owner: { _id: user._id, fullname: user.fullname, isAdmin: user.isAdmin ? true : false},
   }
   bugService.save(bugToSave).then(savedBug => res.send(savedBug))
 })
@@ -72,11 +82,11 @@ app.get('/api/bug/:bugId', (req, res) => {
 })
 
 app.delete('/api/bug/:bugId', (req, res) => {
+  const token = req.cookies.loginToken
+  const loggedInUser = userService.validateToken(token)
   const { bugId } = req.params
 
-  console.log(bugId)
-
-  bugService.remove(bugId).then(() => res.send(`Bug ${bugId} deleted`))
+  bugService.remove(bugId, loggedInUser).then(() => res.send(`Bug ${bugId} deleted`))  
 })
 
 app.get('/**', (req, res) => {
@@ -97,4 +107,22 @@ app.post('/api/auth/login', (req, res) => {
       res.status(401).send('Invalid login')
     }
   })
+})
+
+app.post('/api/auth/signup', (req, res) => {
+
+  const { password, username, fullname } = req.body
+  const credentials = { password, username, fullname }
+
+  userService.save(credentials)
+    .then(user => {
+      const loginToken = userService.getLoginToken(user)
+      res.cookie('loginToken', loginToken)
+      res.send(user)
+    })
+})
+
+app.post('/api/auth/logout', (req, res) => {
+  res.clearCookie('loginToken')
+  res.send('Logged out')
 })

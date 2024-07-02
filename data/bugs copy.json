@@ -1,79 +1,103 @@
 [
   {
-    "_id": "c101",
-    "title": "Cannot save a new car",
-    "description": "problem when clicking Save",
-    "severity": 3,
-    "createdAt": 1542107359454
-  },
-  {
-    "_id": "c102",
-    "title": "An error occured",
-    "description": "problem when clicking Save",
-    "severity": 3,
-    "createdAt": 1542107359454
-  },
-  {
-    "_id": "c103",
-    "title": "Error",
-    "description": "Unknown error",
-    "severity": 3,
-    "createdAt": 1542107359454
-  },
-  {
-    "_id": "c104",
-    "title": "Cannot save",
-    "description": "problem when clicking Save",
-    "severity": 4,
-    "createdAt": 1542107359454
-  },
-  {
-    "_id": "c105",
+    "_id": "c111",
     "title": "Connection problems",
     "description": "No internet connection",
     "severity": 2,
-    "createdAt": 1542107359454
+    "createdAt": 1542107359454,
+    "owner": {
+      "_id": "u101",
+      "fullname": "Idan Markin",
+      "isAdmin": true
+    }
   },
   {
     "_id": "c106",
     "title": "Issues with connection",
     "description": "No connections",
     "severity": 2,
-    "createdAt": 1542107359454
+    "createdAt": 1542107359454,
+    "owner": {
+      "_id": "u101",
+      "fullname": "Puki Ja",
+      "isAdmin": false
+    }
+  },
+  {
+    "_id": "c103",
+    "title": "Error",
+    "description": "Unknown error",
+    "severity": 3,
+    "createdAt": 1542107359454,
+    "owner": {
+      "_id": "u101",
+      "fullname": "Shooki",
+      "isAdmin": false
+    }
+  },
+  {
+    "_id": "c104",
+    "title": "Cannot save",
+    "description": "problem when clicking Save",
+    "severity": 4,
+    "createdAt": 1542107359454,
+    "owner": {
+      "_id": "u101",
+      "fullname": "Shooki",
+      "isAdmin": false
+    }
   },
   {
     "_id": "c107",
     "title": "Problems",
     "description": "No internet connection",
     "severity": 4,
-    "createdAt": 1542107359454
-  },
-  {
-    "_id": "c108",
-    "title": "Connection problems",
-    "description": "No internet connection",
-    "severity": 2,
-    "createdAt": 1542107359454
+    "createdAt": 1542107359454,
+    "owner": {
+      "_id": "u101",
+      "fullname": "Shooki",
+      "isAdmin": false
+    }
   },
   {
     "_id": "c109",
     "title": "Fetching error",
     "description": "Not found",
     "severity": 5,
-    "createdAt": 1542107359454
+    "createdAt": 1542107359454,
+    "owner": {
+      "_id": "u101",
+      "fullname": "Shooki",
+      "isAdmin": false
+    }
   },
   {
-    "_id": "c110",
-    "title": "Connection problems",
-    "description": "No internet connection",
-    "severity": 1,
-    "createdAt": 1542107359454
+    "_id": "a0DdGG",
+    "title": "Server is on fire",
+    "description": "Someone set the server on fire",
+    "severity": 5,
+    "createdAt": 1719489951614,
+    "owner": {
+      "_id": "u101",
+      "fullname": "Shooki",
+      "isAdmin": false
+    }
   },
   {
-    "_id": "c111",
-    "title": "Connection problems",
-    "description": "No internet connection",
-    "severity": 2,
-    "createdAt": 1542107359454
+    "_id": "zVz40t",
+    "severity": 5,
+    "createdAt": 1719504399443,
+    "owner": {
+      "_id": "u101",
+      "fullname": "Shooki",
+      "isAdmin": false
+    }
+  },
+  {
+    "_id": "hlxpkR",
+    "title": "Wallah very big problem",
+    "description": "Someone robbed the startup",
+    "severity": 5,
+    "createdAt": 1719773764994
   }
 ]
